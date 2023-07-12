@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predictions</title>
+    <style>
+        body {
+            background-color: #32afd8; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .result-container {
+            background-color: #FFFFFF; 
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-top: 20px; 
+        }
+        
+        label {
+            color: #2a2a84; 
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        button[type="submit"] {
+            background-color: #000080; 
+            color: #FFFFFF; 
+            padding: 15px 30px; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px; 
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+            display: block; 
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="POST">
+        <label for="inter_api_access_duration">Inter API Access Duration (sec):</label>
+        <input type="number" id="inter_api_access_duration" name="inter_api_access_duration" required><br><br>
+        
+        <label for="sequence_length">Sequence Length (count):</label>
+        <input type="number" id="sequence_length" name="sequence_length" required><br><br>
+        
+        <label for="vsession_duration">VSession Duration (min):</label>
+        <input type="number" id="vsession_duration" name="vsession_duration" required><br><br>
+        
+        <label for="num_unique_apis">Number of Unique APIs:</label>
+        <input type="number" id="num_unique_apis" name="num_unique_apis" required><br><br>
+        
+        <label for="source">Source:</label>
+        <input type="number" id="source" name="source" required><br><br>
+        
+        <label for="statusCode">Status Code:</label>
+        <input type="number" id="statusCode" name="statusCode" required><br><br>
+        
+        <label for="auth_method">Authentication Method:</label>
+        <input type="number" id="auth_method" name="auth_method" required><br><br>
+        
+        <button type="submit">Predict Risk</button>
+    </form>
+    
+    {% if svm_prediction %}
+    <div class="result-container">
+        <h3>SVM Prediction:</h3>
+        <p>{{ svm_prediction[0] }}</p>
+    </div>
+    {% endif %}
+    
+</body>
+</html>
