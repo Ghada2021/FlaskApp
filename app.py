@@ -21,7 +21,7 @@ def home():
 
 @app.route('/dashboards', methods=['GET', 'POST'])
 def dashboards():
-    return render_template('dashboards.html')
+    return render_template('hello.html')
 
 @app.route('/predictions', methods=['GET', 'POST'])
 def predictions():
