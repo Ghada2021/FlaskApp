@@ -21,7 +21,7 @@ def home():
 
 @app.route('/dashboards', methods=['GET', 'POST'])
 def dashboards():
-    return render_template('hello.html')
+    return render_template('dashboards.html')
 
 @app.route('/predictions', methods=['GET', 'POST'])
 def predictions():
@@ -49,15 +49,16 @@ def predictions():
         #lin_prediction = lin_model.predict(inputs)
         #log_prediction = log_model.predict(inputs)
         svm_prediction = svm.predict(inputs)
+        print("svm_prediction= ",int(svm_prediction[0]))
 
         # Return the predictions to the template
         return render_template('predictions.html', 
                                #lin_prediction=lin_prediction,
                                #log_prediction=log_prediction, 
-                               svm_prediction=svm_prediction)
+                               svm_prediction=int(svm_prediction[0]))
 
     return render_template('predictions.html')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True,host="0.0.0.0",port=5000)
